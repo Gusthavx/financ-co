@@ -14,6 +14,7 @@
   <img alt="Python 3.10+" src="https://img.shields.io/badge/Python-3.10%2B-111?style=flat-square&logo=python&logoColor=white">
   <img alt="pywebview" src="https://img.shields.io/badge/pywebview-HTML%20%2F%20CSS%20%2F%20JS-111?style=flat-square">
   <img alt="Offline" src="https://img.shields.io/badge/dados-s%C3%B3%20no%20seu%20PC-111?style=flat-square">
+  <img alt="Licença MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-111?style=flat-square">
 </p>
 
 <p align="center">
@@ -70,6 +71,12 @@ Os lançamentos ficam só no seu computador, em `dados/dados.json`. Nada é envi
 
 - 📱 Versão para iPhone (PWA)
 - 🤖 Conselheiro financeiro com IA: a conta é feita pelo código, a IA explica, discorda quando precisa e fecha numa recomendação
+
+## 📜 Licença
+
+[MIT](LICENSE) © 2026 Gusthavo Silva.
+
+Componentes de terceiros mantêm suas licenças: fontes [Geist](https://github.com/vercel/geist-font) (SIL Open Font License 1.1, `web/fontes/OFL.txt`) e ícones [Phosphor](https://github.com/phosphor-icons/core) (MIT, `web/LICENSE-phosphor.txt`).
 
 ---
 
