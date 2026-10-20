@@ -1,0 +1,43 @@
+FINANC.CO
+Controle pessoal de ganhos, gastos, cartões e contas a pagar. Roda só no seu PC.
+
+
+INSTALAR
+  1. Se veio em zip, extraia a pasta inteira.
+  2. Dê dois cliques em Instalar.bat.
+  3. Abra pelo atalho Financ.co da área de trabalho ou do menu Iniciar.
+
+  Precisa de Windows 10 ou 11 e de internet na hora de instalar.
+  Se o PC não tiver Python, o instalador baixa sozinho pelo winget.
+  Rodar o Instalar.bat de novo atualiza o programa e mantém os lançamentos.
+
+
+DESINSTALAR
+  Dois cliques em Desinstalar.bat, ou
+  Configurações do Windows > Aplicativos > Aplicativos instalados > Financ.co > Desinstalar.
+
+  Ele pergunta se quer apagar também os lançamentos. Enter guarda; S apaga.
+
+
+ONDE FICA CADA COISA
+  Programa ........ %LOCALAPPDATA%\Financ.co\app
+  Lançamentos ..... %LOCALAPPDATA%\Financ.co\app\dados\dados.json
+  Cópias diárias .. %LOCALAPPDATA%\Financ.co\app\dados\copias  (as 30 últimas)
+
+  Para colar o caminho: tecla Windows + R, cole %LOCALAPPDATA%\Financ.co e Enter.
+
+
+LEVAR OS LANÇAMENTOS PARA OUTRO PC
+  1. No PC antigo, copie o arquivo dados.json (caminho acima).
+  2. No PC novo, crie uma pasta chamada dados ao lado do Instalar.bat e ponha o dados.json dentro.
+  3. Rode o Instalar.bat. Ele traz os lançamentos se o PC ainda não tiver nenhum.
+
+  Este pacote não leva lançamentos de ninguém: a pasta dados não vem junto.
+
+
+O QUE TEM NESTA PASTA
+  Instalar.bat ..... instala ou atualiza
+  Desinstalar.bat .. remove
+  instalador.py .... o que os dois arquivos acima rodam
+  app .............. o programa (app.py e a tela em web)
+  Financ.co.zip .... esta mesma pasta compactada, para guardar ou mandar para outro PC

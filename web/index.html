@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Financ.co</title>
+<link rel="icon" href="icone.png">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header>
+  <div class="esq">
+    <span class="marca" aria-label="Financ.co">Financ<i>.co</i></span>
+    <div class="navMes">
+      <button id="btAnt" class="ico" type="button" aria-label="Mês anterior" title="Mês anterior (seta para a esquerda)" data-ic="caret-left"></button>
+      <h1 id="mesTitulo"><b></b><span></span></h1>
+      <button id="btProx" class="ico" type="button" aria-label="Próximo mês" title="Próximo mês (seta para a direita)" data-ic="caret-right"></button>
+      <button id="btHoje" class="mini" type="button" hidden>Hoje</button>
+    </div>
+  </div>
+  <div class="dir">
+    <button id="alerta" class="alerta" type="button" hidden></button>
+    <nav class="abas" role="tablist" aria-label="Telas">
+      <i class="ind"></i>
+      <button type="button" role="tab" data-vista="vMapa" class="ativo" aria-selected="true">Mapa</button>
+      <button type="button" role="tab" data-vista="vCal" aria-selected="false">Calendário</button>
+      <button type="button" role="tab" data-vista="vCartoes" aria-selected="false">Cartões</button>
+    </nav>
+    <button id="btTema" class="ico" type="button" aria-label="Trocar entre tela preta e tela branca" title="Tela preta ou branca"></button>
+    <button id="btMenu" class="ico" type="button" popovertarget="menu" aria-label="Mais opções" title="Mais opções" data-ic="dots-three-outline"></button>
+  </div>
+</header>
+
+<div id="menu" class="menu" popover>
+  <button id="btExemploMenu" type="button">Carregar dados de exemplo</button>
+  <button id="btLimpaEx" type="button" hidden>Limpar dados de exemplo</button>
+  <button id="btApagar" class="perigo" type="button">Apagar todos os dados</button>
+</div>
+
+<main>
+  <section class="palco">
+    <div id="vMapa" class="vista ativa">
+      <svg id="svg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet" aria-label="Mapa do dinheiro do mês">
+        <g id="rotE" class="lado"><text class="t" y="-17" text-anchor="middle">Entrou</text><text class="n mono" text-anchor="middle"></text></g>
+        <g id="rotS" class="lado"><text class="t" y="-17" text-anchor="middle">Saiu</text><text class="n mono" text-anchor="middle"></text></g>
+        <g id="elos"></g>
+        <g id="parts"></g>
+        <g id="nos"></g>
+        <g id="centro">
+          <circle class="anel" r="78"></circle>
+          <circle class="miolo" r="70"></circle>
+          <text class="cRot" y="-14" text-anchor="middle">Sobra do mês</text>
+          <text id="cVal" class="cVal" y="14" text-anchor="middle">R$ 0,00</text>
+        </g>
+      </svg>
+      <div id="vazio" class="vazio some">
+        <p id="vazioTxt"></p>
+        <button id="btExemplo" class="btn" type="button">Ver com dados de exemplo</button>
+      </div>
+    </div>
+
+    <div id="vCal" class="vista">
+      <div class="semana"><span>dom</span><span>seg</span><span>ter</span><span>qua</span><span>qui</span><span>sex</span><span>sáb</span></div>
+      <div id="grade" class="grade"></div>
+      <p class="legenda"><i class="selo oca" data-ic="handbag"></i><span>compra no cartão, pesa na fatura</span><i class="pino"></i><span>conta atrasada</span></p>
+    </div>
+
+    <div id="vCartoes" class="vista">
+      <p class="explica">Com o dia do fechamento e o do vencimento, o app sabe em que mês cada compra pesa e divide os parcelados.</p>
+      <div id="tiles" class="tiles"></div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"><span></span><button type="button" hidden></button></div>
+  </section>
+
+  <aside>
+    <div class="sobra">
+      <small>Sobra do mês</small>
+      <strong id="totS" class="mono"></strong>
+      <div class="par">
+        <div><small>Entrou</small><b id="totG" class="mono entra"></b></div>
+        <div><small>Saiu</small><b id="totD" class="mono"></b></div>
+      </div>
+    </div>
+    <div class="uso">
+      <div id="barra" class="barra"></div>
+      <p id="usoTxt"></p>
+    </div>
+    <button id="btNovo" class="btn cheio" type="button" data-ic="plus">Registrar <kbd>N</kbd></button>
+
+    <div class="seg" id="seg" role="tablist" aria-label="Detalhes do mês">
+      <button type="button" role="tab" data-painel="cats" class="ativo" aria-selected="true">Categorias</button>
+      <button type="button" role="tab" data-painel="lancs" aria-selected="false">Lançamentos</button>
+      <button type="button" role="tab" data-painel="pagar" aria-selected="false">A pagar<b id="segN" hidden></b></button>
+    </div>
+
+    <div class="rola">
+      <div id="pCats" class="painel ativo">
+        <h3>Para onde foi</h3>
+        <ul id="catsD" class="cats"></ul>
+        <h3>De onde veio</h3>
+        <ul id="catsG" class="cats"></ul>
+      </div>
+      <div id="pLancs" class="painel">
+        <h3 class="titFiltro"><span id="listaTitulo">Lançamentos</span><button id="btLimpa" type="button" hidden>ver todos</button></h3>
+        <ul id="lista" class="lancs"></ul>
+      </div>
+      <div id="pPagar" class="painel">
+        <div id="pagar"></div>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  <div id="linha" class="linha"></div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlgTitulo">
+  <div class="dlgTopo">
+    <h2 id="dlgTitulo">Novo lançamento</h2>
+    <button id="dlgFechar" class="ico" type="button" aria-label="Fechar" data-ic="x"></button>
+  </div>
+  <ul id="doDia" class="lancs"></ul>
+  <form id="form" autocomplete="off" novalidate>
+    <div class="troca" id="troca">
+      <button type="button" data-tipo="gasto" class="ativo">Gasto</button>
+      <button type="button" data-tipo="ganho">Ganho</button>
+    </div>
+    <label class="campo"><span>Valor</span>
+      <div class="valor" id="caixaValor"><span>R$</span><input id="fValor" inputmode="decimal" placeholder="0,00" aria-describedby="erroValor"></div>
+      <small id="erroValor" class="erro" hidden>Digite o valor com vírgula nos centavos, como 1.234,56.</small>
+    </label>
+    <label class="campo"><span>Descrição</span><input id="fDesc" placeholder="Mercado, salário, aluguel" aria-describedby="erroDesc">
+      <small id="erroDesc" class="erro" hidden>Dê um nome para o lançamento.</small>
+    </label>
+    <div class="dupla">
+      <label class="campo"><span>Categoria</span><select id="fCat"></select></label>
+      <label class="campo"><span>Data</span><input id="fData" type="date"></label>
+    </div>
+    <div class="dupla" id="linhaForma">
+      <label class="campo"><span>Pago com</span><select id="fForma"></select></label>
+      <label class="campo"><span>Parcelas</span><select id="fParc"></select></label>
+    </div>
+    <label class="check"><input id="fFixo" type="checkbox"> Repete todo mês</label>
+    <label class="check" id="linhaPend"><input id="fPend" type="checkbox"> Ainda não paguei</label>
+    <p id="dicaPagar" class="ajuda" hidden>Entra em A pagar e fica pendente até você marcar como pago.</p>
+    <div class="acoes">
+      <button id="btExcluir" class="btn perigo" type="button" hidden data-ic="trash">Apagar</button>
+      <button id="btSalvar" class="btn cheio" type="submit">Registrar</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="icones.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
