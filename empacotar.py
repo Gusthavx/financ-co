@@ -1,4 +1,4 @@
-# Atualiza o pacote de instalação em ~/projetos/Financ.co a partir desta pasta e refaz o zip.
+# Atualiza o pacote de instalação na pasta ../Financ.co (ao lado desta) a partir desta pasta e refaz o zip.
 # Rodar depois de qualquer mudança no app: python empacotar.py
 # O pacote nunca leva a pasta dados (lançamentos pessoais).
 import os

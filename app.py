@@ -130,7 +130,7 @@ def _ao_abrir():
 
 def _separar_na_barra():
     """Dá identidade própria à janela na barra de tarefas: sem isso o Windows junta com
-    qualquer outro programa que rode pelo pythonw (ex.: Restock Analytics)."""
+    qualquer outro programa que rode pelo pythonw."""
     try:
         import ctypes
         import pywintypes
